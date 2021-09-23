@@ -1,7 +1,11 @@
 /.idea
+**/*/.idea
 /.vscode
 *.DS_Store
 .DS_Store
+
+**/*/cmake-build-debug
+**/**/CMakeLists.txt
 
 # Logs
 logs
@@ -45,6 +49,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+**/*/node_modules/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
