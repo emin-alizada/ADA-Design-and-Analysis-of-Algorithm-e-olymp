@@ -1,7 +1,8 @@
-////
-//// Created by Emin Alizade on 01.10.21.
-////
+//
+// Created by Emin Alizade on 01.10.21.
+//
 
+//Whole code which might not pass in e-olymp, but here is for understanding whole picture
 #include <iostream>
 
 using namespace std;
@@ -106,33 +107,33 @@ public:
         }
         cout << endl;
     }
+
+    int sum() {
+        ListNode *temp = head;
+        int sum = 0;
+
+        while (temp != NULL) {
+            sum += temp->data;
+            temp = temp->next;
+        }
+
+        return sum;
+    }
 };
 
-int i, n, x, cyc;
-ListNode *temp;
-
 int main() {
-    scanf("%d", &n);
+    int n;
     LinkedList *list = new LinkedList();
-    if (list->Empty()) printf("Empty\n");
 
-    for (i = 0; i < n; i++)
-    {
-        scanf("%d", &x);
-        list->addFirst(x);
+    cin >> n;
+
+    for (int i = 0; i < n; ++i) {
+        int temp;
+        cin >> temp;
+        list->addLast(temp);
     }
 
-    for (i = 0; i < n; i++)
-    {
-        scanf("%d", &x);
-        list->addLast(x);
-    }
-
-    list->removeFirst(); list->removeLast();
-    list->removeFirst();
-
-    list->Print();
-    printf("%d\n",list->size());
+    cout << list->sum() << endl;
 
     return 0;
 }
