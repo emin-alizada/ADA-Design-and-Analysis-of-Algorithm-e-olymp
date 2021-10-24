@@ -7,6 +7,11 @@ function binomCoef(n, k) {
 
     const left = c[n - 1]?.[k - 1] ? c[n - 1]?.[k - 1] : binomCoef(n - 1, k - 1);
     const right = c[n - 1]?.[k] ? c[n - 1]?.[k] : binomCoef(n - 1, k);
+    if (!c[n-1]) {
+        c[n-1] = [];
+    }
+    c[n-1][k-1] = left;
+    c[n-1][k] = right;
 
     return left + right;
 }
