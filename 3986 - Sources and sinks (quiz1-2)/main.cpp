@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//Sources and sinks
+// 3986 - Sources and sinks
 int main() {
     int n;
     cin >> n;

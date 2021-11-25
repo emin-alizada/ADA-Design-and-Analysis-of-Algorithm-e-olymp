@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 
-//Conscription - 182
+// 182 - Conscription
 
 using namespace std;
 

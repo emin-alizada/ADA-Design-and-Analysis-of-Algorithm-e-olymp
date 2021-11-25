@@ -4,7 +4,7 @@ using namespace std;
 
 long long w, h ,n;
 
-// Diplomas - 3969
+// 3969 - Diplomas
 
 long long f(long long x) {
     return (x / w) * (x / h);

@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 
-// Digital root - 3937
+// 3937 - Digital root
 
 using namespace std;
 
