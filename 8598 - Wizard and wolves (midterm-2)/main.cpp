@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #define MAX 100001
 long long h[MAX], n, a, b;
@@ -7,13 +8,13 @@ using namespace std;
 
 // 8598 - Wizard and wolves
 
-// TODO finish
-
 long long canBeKilled(long long x) {
     long long res = 0;
+
     for (long long i = 0; i < n; i++) {
         if (h[i] > x * b) {
-            res += (h[i] - x * b + a - 1) / a;
+//            casting to double one side of division is important to prevent integer division
+            res += ceil( (h[i] - x * b) / (double)(a - b) );
         }
     }
 
@@ -32,8 +33,12 @@ int main() {
     while (left < right)
     {
         mid = (left + right) / 2;
-        if (canBeKilled(mid)) right = mid;
-        else left = mid + 1;
+        if (canBeKilled(mid)) {
+            right = mid;
+        }
+        else {
+            left = mid + 1;
+        }
     }
 
     cout << left;
