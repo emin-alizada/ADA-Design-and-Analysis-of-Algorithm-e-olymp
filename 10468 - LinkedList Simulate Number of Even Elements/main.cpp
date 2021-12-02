@@ -1,5 +1,5 @@
 ////
-//// Created by Emin Alizade on 01.10.21.
+//// Created by Emin Alizade on 02.12.21.
 ////
 
 #include <iostream>
@@ -22,13 +22,13 @@ public:
     ListNode *head, *tail;
 
     LinkedList() {
-        head = NULL;
-        tail = NULL;
+        head = nullptr;
+        tail = nullptr;
     };
 
     // check if list is empty
     bool Empty() {
-        return head == NULL;
+        return head == nullptr;
     }
 
     // add val to the head of the list
@@ -37,7 +37,7 @@ public:
             head = tail = new ListNode(val);
         } else {
             ListNode *temp = new ListNode(val);
-            temp->next = head->next;
+            temp->next = head;
             head = temp;
         }
     }
@@ -57,7 +57,7 @@ public:
         if (this->Empty()) {
             return false;
         } else if (head == tail) {
-            head = tail = NULL;
+            head = tail = nullptr;
         } else {
             head = head->next;
         }
@@ -69,7 +69,7 @@ public:
         if (this->Empty()) {
             return false;
         } else if (head == tail) {
-            head = tail = NULL;
+            head = tail = nullptr;
         } else {
             ListNode *temp = head;
 
@@ -77,7 +77,7 @@ public:
                 temp = temp->next;
             }
 
-            temp->next = NULL;
+            temp->next = nullptr;
             tail = temp;
         }
         return true;
@@ -88,7 +88,7 @@ public:
         int count = 0;
         ListNode *temp = head;
 
-        while (temp != NULL) {
+        while (temp != nullptr) {
             count++;
             temp = temp->next;
         }
@@ -100,39 +100,73 @@ public:
     void Print() {
         ListNode *temp = head;
 
-        while (temp != NULL) {
+        while (temp != nullptr) {
             cout << temp->data << " ";
             temp = temp->next;
         }
         cout << endl;
     }
+
+    int sumOfOdd() {
+        ListNode *temp = head;
+        int sum = 0;
+
+        while (temp != nullptr) {
+            if (temp->data % 2 == 1) {
+                sum += temp->data;
+            }
+            temp = temp->next;
+        }
+
+        return sum;
+    }
+
+    int numberOfEvenElements() {
+        ListNode *temp = head;
+        int count = 0;
+
+        while (temp != nullptr) {
+            if (temp->data % 2 == 0) {
+                count++;
+            }
+            temp = temp->next;
+        }
+
+        return count;
+    }
 };
 
-int i, n, x, cyc;
-ListNode *temp;
 
 int main() {
-    scanf("%d", &n);
+    int temp;
+    string o, o1;
     LinkedList *list = new LinkedList();
-    if (list->Empty()) printf("Empty\n");
 
-    for (i = 0; i < n; i++)
-    {
-        scanf("%d", &x);
-        list->addFirst(x);
+    while (cin >> o >> o1) {
+        string op = o + " " + o1;
+
+        if (op == "push front") {
+            cin >> temp;
+
+            list->addFirst(temp);
+        }
+
+        if (op == "push back") {
+            cin >> temp;
+
+            list->addLast(temp);
+        }
+
+        if (op == "pop front") {
+            list->removeFirst();
+        }
+
+        if (op == "pop back") {
+            list->removeLast();
+        }
     }
 
-    for (i = 0; i < n; i++)
-    {
-        scanf("%d", &x);
-        list->addLast(x);
-    }
-
-    list->removeFirst(); list->removeLast();
-    list->removeFirst();
-
-    list->Print();
-    printf("%d\n",list->size());
+    cout << list->numberOfEvenElements();
 
     return 0;
 }
